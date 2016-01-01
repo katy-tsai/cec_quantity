@@ -50,7 +50,7 @@ const AddProject = React.createClass({
   _handleItemsChange(items){
     console.log(items)
     var project = this.state.project;
-    socket.emit('saveItems',items);
+
     this.setState({project:project,ProjectItems:items});
   },
 

@@ -40,17 +40,41 @@ module.exports = function(sequelize,DataTypes){
    {tableName: 'project',
     instanceMethods:{
 
-      getAll:function(onSuccess,onError){
+      getAll:function(entity,onSuccess,onError){
         Projects.findAll().then(onSuccess).catch(onError);
       },
 
-     getById:function(onSuccess,onError){
-       var entity = this.get();
+      getLikeNameOrCode:function(entity,onSuccess,onError){
+
+
+        var projectCode_like = '%'+entity.projectCode+'%';
+        var projectName_like = '%'+entity.projectName+'%';
+        console.log(projectCode_like);
+        console.log(projectName_like);
+        Projects.findAll({where:{
+              $or: [
+                {
+                  projectCode: {
+                    $like: projectCode_like
+                  }
+                },
+                {
+                  projectName: {
+                    $like:projectName_like
+                  }
+                }
+              ]
+            }
+          }).then(onSuccess).catch(onError);
+      },
+
+     getById:function(entity,onSuccess,onError){
+
        var id = entity.id;
        Projects.find({where:{id:id}},{raw:true}).then(onSuccess).catch(onError);
      },
-      createOrUpdate:function(onSuccess,onError){
-         var entity = this.get();
+      createOrUpdate:function(entity,onSuccess,onError){
+         
          if(entity.id!=null){
            Projects.update(entity,{where:{id:entity.id}}).then(function(){
              return Projects.findById(entity.id);

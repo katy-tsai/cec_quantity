@@ -1,0 +1,42 @@
+.selectList{
+
+  border-bottom: 1px solid #ddd;
+}
+.selectList input{
+  margin:10px 20px;
+  padding: 2px 10px;
+  width: 80%;
+  height: 30px;
+  border: 1px solid #BBBBBB; //改變外框
+  line-height: 30px;
+ -moz-border-radius:3px; // Firefox
+ -webkit-border-radius: 3px; // Safari 和 Chrome
+ border-radius: 3px; // Opera 10.5+
+}
+
+.searchIcon{
+  font-size: 20px;
+  color:#BBBBBB;
+  position: relative;
+  top: 2px;
+  left: -45px;
+}
+
+.select_active{
+  background-color: #7ABCB3;
+  color:#fff;
+  position:relative;
+}
+
+.select_active::after{
+  content:'';
+  width:0;
+ height:0;
+ border-width:20px;
+ border-style:solid;
+ position:absolute;
+ top:0;
+ right:-40px;
+ border-color:rgba(255,200,0,0) rgba(255,200,0,0) rgba(255,200,0,0)  #7ABCB3;
+
+}

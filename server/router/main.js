@@ -11,15 +11,15 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/project/:func',function(req,res){
-    var item = req.body;
+    var obj = req.body;
     var project = Project.build();
-    if(item){
-       project = Project.build(item);
-    }
 
+    if(obj){
+       project = Project.build(obj);
+    }
     var func = project[req.params.func];
-    func(function(objs){
-      console.log(objs)
+
+    func(obj,function(objs){
       res.json(objs);
     },function(err){
       log.err(err);
