@@ -7,15 +7,15 @@ const itemName = ['item','unit','contractNum','contractPrice','contractCheckPric
 
 var ProjectGrid = React.createClass({
   getInitialState: function() {
-     //var ProjectItems = this.props.ProjectItems;
-    var ProjectItems =[{id: 36, item: "結構", hasChild: "N", order: "0", type: "root"},
-    {id: 37, item: "泥作", hasChild: "N", order: "1", type: "root"},
-    {id: 38, item: "輕質牆", hasChild: "N", order: "2", type: "root"}]
-    const tree = treeData.init(ProjectItems);
+    var projectItems = this.props.projectItems;
+    // var projectItems =[{id: 36, item: "結構", hasChild: "N", order: "0", type: "root"},
+    // {id: 37, item: "泥作", hasChild: "N", order: "1", type: "root"},
+    // {id: 38, item: "輕質牆", hasChild: "N", order: "2", type: "root"}]
+    const tree = treeData.init(projectItems);
 
    return {
      project:this.props.project,
-     ProjectItems:ProjectItems,
+     projectItems:projectItems,
      tree:tree,
      editView:'view',
      editNode:{}

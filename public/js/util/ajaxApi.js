@@ -1,3 +1,18 @@
+exports.itemDao = function(func,obj,callback){
+  var data = null;
+  if(obj){
+    data = obj;
+  }
+  var url = "main/projectItems/"+func;
+  $.ajax({
+    method: "post",
+    url: url,
+    data:data
+  })
+  .done(function( msg ) {
+    callback(msg);
+  });
+}
 
 exports.projectDao = function(func,obj,callback){
   var data = null;

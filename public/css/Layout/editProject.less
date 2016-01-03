@@ -1,0 +1,73 @@
+.editContainer{
+  display: block;
+  float: left;
+  width: 99%;
+  margin: 5px ;
+  background-color: @optPlane-color;
+}
+
+.list-table{
+    width: 100%;
+
+}
+
+.list-table >thead>tr>th{
+    border:1px solid #ddd;
+    padding: 10px;
+    background-color: @form-main-color;
+    color:#fff;
+
+}
+.list-table >tbody>tr>td.edit-icon{
+  text-align: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color:#4A627E;
+}
+.list-table >tbody>tr.rowActive{
+    background-color: #FFFF99;
+}
+.list-table >tbody>tr>td{
+    border:1px solid #ddd;
+    padding: 10px 10px;
+}
+.tfooter{
+  margin-top: 20px;
+  margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction:row;
+  justify-content:center;
+}
+.pagination{
+  width: 25px;
+  padding: 5px;
+  margin: 2px ;
+  border:1px solid #ddd;
+  background-color: @form-main-color;
+  color:#fff;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.pagination.active{
+  background-color:#7ABCB3;
+  color:#fff;
+}
+.pagination:hover{
+  cursor: pointer;
+}
+
+.noteWorkItems{
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #616161;
+  opacity: 0.5;
+  width: 100%;
+  height: 100vh;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  margin-top: 10%;
+
+}

@@ -19,11 +19,16 @@ module.exports = function(sequelize,DataTypes){
    {tableName: 'projectItems',
    instanceMethods:{
 
-     getAll:function(onSuccess,onError){
+     getAll:function(entity,onSuccess,onError){
        ProjectItems.findAll().then(onSuccess).catch(onError);
      },
-     createOrUpdate:function(onSuccess,onError){
-        var entity = this.get();
+     getAllByProjectId:function(entity,onSuccess,onError){
+       var projectId = entity.projectId;
+       ProjectItems.findAll({where:{
+         projectId:projectId
+       }}).then(onSuccess).catch(onError);
+     },
+     createOrUpdate:function(entity,onSuccess,onError){
         if(entity.id!=null){
           ProjectItems.update(entity,{where:{id:entity.id}}).then(function(){
             return Projects.findById(entity.id);

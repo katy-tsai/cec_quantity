@@ -24,15 +24,24 @@ router.post('/project/:func',function(req,res){
     },function(err){
       log.err(err);
     })
-  //  project.getAll(function(objs){
-  //    console.log(objs)
-  //    res.json(objs);
-  //  },function(err){
-  //      log.debug(err);
-  //  })
+});
 
+router.post('/projectItems/:func',function(req,res){
+    var obj = req.body;
+    var projectItems = ProjectItems.build();
+    console.log(obj)
+    if(obj){
+       projectItems = ProjectItems.build(obj);
+    }
+    var func = projectItems[req.params.func];
 
-})
+    func(obj,function(objs){
+      res.json(objs);
+    },function(err){
+      log.err(err);
+    })
+});
+
 router.post('/saveItems',function(req,res){
   var item = req.body;
   log.debug(item);

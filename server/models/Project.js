@@ -45,12 +45,8 @@ module.exports = function(sequelize,DataTypes){
       },
 
       getLikeNameOrCode:function(entity,onSuccess,onError){
-
-
         var projectCode_like = '%'+entity.projectCode+'%';
         var projectName_like = '%'+entity.projectName+'%';
-        console.log(projectCode_like);
-        console.log(projectName_like);
         Projects.findAll({where:{
               $or: [
                 {
@@ -69,12 +65,11 @@ module.exports = function(sequelize,DataTypes){
       },
 
      getById:function(entity,onSuccess,onError){
-
        var id = entity.id;
        Projects.find({where:{id:id}},{raw:true}).then(onSuccess).catch(onError);
      },
       createOrUpdate:function(entity,onSuccess,onError){
-         
+
          if(entity.id!=null){
            Projects.update(entity,{where:{id:entity.id}}).then(function(){
              return Projects.findById(entity.id);

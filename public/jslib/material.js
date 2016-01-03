@@ -16,7 +16,7 @@ Material.prototype.init = function(modules, options) {
 	for (var i = 0, len = modules.length; i < len; i++) {
 		var module = modules[i];
 		if (!window.hasOwnProperty(module) || !window[module].hasOwnProperty("init") || !window[module].isMaterialModule) {
-			console.warn("[material.init] Module not found : " + module);
+			//console.log("[material.init] Module not found : " + module);
 			return;
 		}
 		if (options && options[module]) {
@@ -85,7 +85,7 @@ var Theme = {
 				el.classList.add("dark-theme");
 				break;
 			default:
-				console.log("[Theme.setTheme] Unknown theme : " + theme);
+				//console.log("[Theme.setTheme] Unknown theme : " + theme);
 				break;
 		}
 	}
@@ -295,12 +295,12 @@ var FancyHeader = {
 		if (this.initialised) return;
 		// Little Setup ?
 		if (!options || options.header === null || options.scrollTarget === null) {
-			console.warn("[FancyHeader.init] You need to Setup a Header and Scroll-Target (window or obj) at least!");
+			//console.log("[FancyHeader.init] You need to Setup a Header and Scroll-Target (window or obj) at least!");
 			return;
 		}
 		this.header = options.header;
 		this.scrollTarget = options.scrollTarget;
-		// Fix for Paddings
+		// Fix for Paddingslo
 		// var headerHeight = Math.max(this.header.scrollHeight, this.header.offsetHeight, this.header.clientHeight);
 		// var sections = document.querySelectorAll(".navigation-section");
 		// for (var i = 0, len = sections.length; i < len; i++) {

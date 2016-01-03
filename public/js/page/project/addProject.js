@@ -3,8 +3,7 @@ const ReactDOM = require('react-dom');
 const ProjectForm = require('../../componets/ProjectForm');
 const Breadcrumb = require("../../componets/Breadcrumb");
 const ProjectList = require("../../componets/ProjectList");
-var injectTapEventPlugin = require("react-tap-event-plugin");
-injectTapEventPlugin();
+
 const AddProject = React.createClass({
   getInitialState: function() {
    return {

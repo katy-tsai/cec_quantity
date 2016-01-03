@@ -48,8 +48,8 @@ body {
 
 /* Layout */
 .main-content {
-	overflow: auto;
-	height: 100vh;
+	overflow: hidden;
+	height: 98vh;
 	background-color: inherit;
 }
 .section {
@@ -1179,6 +1179,7 @@ code {
 	top: 0;
 	left: 0;
 	height: 100vh;
+
 	width: 80%;
 	max-width: 15rem;
 	z-index: 10000;
@@ -1188,7 +1189,7 @@ code {
 	/*border-right: 1px solid #ddd;*/
 	-webkit-transition: 0.75s margin-left, 0.2s box-shadow;
 	transition: 0.75s margin-left, 0.2s box-shadow;
-	overflow: auto;
+	overflow: hidden;
 	z-index: 999;
 }
 .desktop .sidemenu.sidebar {
