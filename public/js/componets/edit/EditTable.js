@@ -3,38 +3,28 @@ const ReactDOM = require('react-dom');
 const ajaxApi = require('../../util/ajaxApi');
 const ProjectGrid = require('../ProjectGrid');
 var EditTable = React.createClass({
-  getInitialState: function() {
-   return {
-     editPproject:this.props.data,
-     editProjectItems:this.props.editProjectItems,
-     view:(this.props.editProjectItems.length!=0)?'grid':'blank'
-   };
- },
-
- componentDidMount: function() {
-
- },
  render_blank(){
-   var editPproject = this.state.editPproject;
+   var editProject = this.props.editProject;
    return (
      <div className="noteWorkItems">
-      <i className="icon-add-circle-outline" style={{fontSize:'30px'}}></i> 請新增{editPproject.projectName}工項
+      <i className="icon-add-circle-outline" style={{fontSize:'30px'}}></i> 請新增{editProject.projectName}工項
      </div>
    )
  },
  render_grid(){
-   var editPproject = this.state.editPproject;
-   var editProjectItems = this.state.editProjectItems;
-   console.log('render_grid',editProjectItems)
+   var editProject = this.props.editProject;
+   var editProjectItems = this.props.editProjectItems;
+   console.log('4.render_grid',editProjectItems)
    return (
-     <div className="mainContainer card" z="5">
-         <ProjectGrid  project={editPproject} ProjectItems={editProjectItems} />
+     <div>
+         <ProjectGrid  project={editProject} editProjectItems={editProjectItems} />
      </div>
    )
  },
   render(){
-    var editProjectItems = this.state.editProjectItems;
-    var view = this.state.view;
+    var editProjectItems = this.props.editProjectItems;
+    console.log('3.render grid item:',editProjectItems);
+    var view = (this.props.editProjectItems.length!=0)?'grid':'blank';
     return this['render_'+view]();
   }
 });

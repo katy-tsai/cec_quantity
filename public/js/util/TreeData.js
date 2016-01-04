@@ -1,12 +1,13 @@
 var Tree = require('./Tree.js');
 var _ = require('lodash');
-var tree = new Tree();
+var tree;
 var i =1;
 var data;
 module.exports = {
   init:init
 };
 function init(data){
+  var tree = new Tree();
   data = data;
   var rootArray = _.sortBy(_.filter(data,{type:'root'}),'order');
   rootArray.map(function(root){

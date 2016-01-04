@@ -18,9 +18,10 @@ var EditProject = React.createClass({
   getInitialState: function() {
    return {
      projects:[],
-     editPproject:{},
+     editProject:{},
      editProjectItems:[],
      view:"list",
+     tree:{},
      isShowEditDialog:false
 
    };
@@ -43,18 +44,21 @@ var EditProject = React.createClass({
    )
  },
  renderEdit(){
-     var editPproject = this.state.editPproject;
+     var editProject = this.state.editProject;
      var toolbar =[{name:'項目編輯',clickFun:'editItem',icon:'icon-border-color'},
                    {name:'複製工項',clickFun:'copyItem',icon:'icon-content-copy'},
                    {name:'返回列表',clickFun:'returnList',icon:'icon-format-list-bullet'}];
     var editProjectItems = this.state.editProjectItems;
-    var showEditDialog = this.state.isShowEditDialog?<EditltemDialog closeDialog={this._handleCloseEditDialog} editProjectItems={editProjectItems}/>:'';
-
+    var showEditDialog = this.state.isShowEditDialog?
+      <EditltemDialog closeDialog={this._handleCloseEditDialog}
+       editProjectItems={editProjectItems} setItems={this.setItems}
+          project={editProject}/>:'';
+    console.log('2.render edittable item:',editProjectItems);
      return (
        <div>
-         <Breadcrumb header={editPproject.projectName } toolbar={toolbar} editItem={this._handleEditItem} copyItem={this._handleCopyItem} returnList = {this._handleReturnList}/>
+         <Breadcrumb header={editProject.projectName } toolbar={toolbar} editItem={this._handleEditItem} copyItem={this._handleCopyItem} returnList = {this._handleReturnList}/>
          <div className="editContainer card" z="5">
-           <EditTable data={editPproject} editProjectItems={editProjectItems}/>
+           <EditTable editProject={editProject} editProjectItems={editProjectItems}/>
          </div>
          {showEditDialog}
        </div>
@@ -64,12 +68,16 @@ var EditProject = React.createClass({
     var projects = this.state.projects;
     return this.state.view =="list"?this.renderList():this.renderEdit();
   },
+  setItems(items){
+    console.log('1.setitems',items)
+    this.setState({editProjectItems:items,view:'edit'});
+  },
   _handleEditClick(index){
     var projects = this.state.projects;
-    var editPproject = projects[index];
-    var projectId = editPproject.id;
+    var editProject = projects[index];
+    var projectId = editProject.id;
     ajaxApi.itemDao('getAllByProjectId',{projectId:projectId},function(data){
-      this.setState({editPproject:editPproject,view:'edit',editProjectItems:data});
+      this.setState({editProject:editProject,view:'edit',editProjectItems:data});
     }.bind(this));
 
   },
@@ -83,7 +91,7 @@ var EditProject = React.createClass({
 
   },
   _handleReturnList(){
-    this.setState({view:'list'});
+    this.setState({view:'list',editProject:{},editProjectItems:[]});
   }
 })
 module.exports = EditProject;

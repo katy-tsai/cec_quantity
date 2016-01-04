@@ -4,21 +4,17 @@ const TreeGrid = require('./grid/TreeGrid');
 const treeData = require('../util/TreeData');
 const headers = ['項目名稱','單位','發包數量','發包單價','發包複價','發包工率','備註'];
 const itemName = ['item','unit','contractNum','contractPrice','contractCheckPrice','contractRate','note'];
-
+const EditTreeltemDialog = require('./dialog/EditTreeItemDialog');
 var ProjectGrid = React.createClass({
   getInitialState: function() {
-    var projectItems = this.props.projectItems;
-    // var projectItems =[{id: 36, item: "結構", hasChild: "N", order: "0", type: "root"},
-    // {id: 37, item: "泥作", hasChild: "N", order: "1", type: "root"},
-    // {id: 38, item: "輕質牆", hasChild: "N", order: "2", type: "root"}]
+    var projectItems = this.props.editProjectItems;
     const tree = treeData.init(projectItems);
-
    return {
      project:this.props.project,
      projectItems:projectItems,
      tree:tree,
-     editView:'view',
-     editNode:{}
+     editNode:{},
+     isShowEditTreeDialog:false
    };
  },
  componentDidMount: function() {
@@ -32,32 +28,31 @@ var ProjectGrid = React.createClass({
      this.props.itemChange(items);
    }.bind(this));
  },
- render_view(){
-  var tree = this.state.tree;
-   return (
-     <TreeGrid header={headers} itemName={itemName} treeViewWidth={30} tree={tree} openEdit={this.openEdit}/>
-   )
- },
- render_root(){
-   var editNode = this.state.editNode;
-   console.log(editNode);
-   return (
-     <div>Hello node</div>
-   )
- },
+
   render(){
     var project = this.props.project;
     var editView = this.state.editView;
+    var projectItems = this.props.editProjectItems;
+    const tree = treeData.init(projectItems);
+    var showEditTreeDialog = this.state.isShowEditTreeDialog?
+      <EditTreeltemDialog closeDialog={this._handleCloseEditDialog}
+       editProjectItems={projectItems}
+          project={project}/>:'';
+
     return (
       <div>
         <div className="treeGrid-header">{project.projectName}</div>
-        {this[ 'render_'+editView]()}
+        <TreeGrid header={headers} itemName={itemName} treeViewWidth={30} tree={tree} openEdit={this.openEdit}/>
+        {showEditTreeDialog}
      </div>
     );
   },
   openEdit:function(node){
-    var editView = node.data.type;
-    this.setState({editView:editView,editNode:node});
+    console.log(node);
+    this.setState({editNode:node,isShowEditTreeDialog:true});
+  },
+  _handleCloseEditDialog:function(){
+    this.setState({isShowEditTreeDialog:false});
   }
 
 

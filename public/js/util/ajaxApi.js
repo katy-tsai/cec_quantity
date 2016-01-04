@@ -14,6 +14,20 @@ exports.itemDao = function(func,obj,callback){
   });
 }
 
+exports.saveItems = function(items,ProjectId,callback){
+  var data = {items:items,ProjectId:ProjectId};
+
+  var url = "main/saveItems";
+  $.ajax({
+    method: "post",
+    url: url,
+    data:data
+  })
+  .done(function( msg ) {
+    callback(msg);
+  });
+}
+
 exports.projectDao = function(func,obj,callback){
   var data = null;
   if(obj){
@@ -51,18 +65,5 @@ exports.getWorkItem = function(callback){
   .done(function( msg ) {
     console.log(msg);
     callback(msg);
-  });
-}
-
-exports.saveItems = function(item,callback){
-  var url="main/saveItems";
-  $.ajax({
-    method: "post",
-    data:item,
-    url: url,
-  })
-  .done(function( item ) {
-    console.log(item);
-    callback(item);
   });
 }

@@ -34,7 +34,7 @@ var GridBody = React.createClass({
       }
   },
   render(){
-    var tree = this.state.tree;
+    var tree = this.props.tree;
     var roots = tree._root.children;
 
     // var divStyle ={

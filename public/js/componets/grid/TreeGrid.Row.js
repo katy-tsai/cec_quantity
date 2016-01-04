@@ -18,13 +18,14 @@ var GridRow = React.createClass({
        {
          itemName.map(function(name,index){
            //<span className={childs.length>0?iconClass:"show-btn"}  onClick={this.props.isOpen}>{data[name]}</span>
+           // <button className=" bg-blue-500 color-white" id="edit-button"  title="編輯" onClick={this.props.openEdit.bind(null,node)} ><i className="icon-mode-edit" ></i></button>
+
            if(name=='item'){
               var  item_width ={width: treeViewWidth+'%'};
               return (
                 <div className="tree-column" key={index} style={item_width}>
-                   <button className=" bg-blue-500 color-white" id="edit-button"  title="編輯" onClick={this.props.openEdit.bind(null,node)} ><i className="icon-mode-edit" ></i></button>
-
-                   <span className={iconClass}  onClick={this.props.isOpen}><span className={itemClass}></span>{data[name]}</span>
+                    <button className=" bg-blue-500 color-white" id="edit-button"  title="編輯" onClick={this.props.openEdit.bind(null,node)} ><i className="icon-mode-edit" ></i></button>
+                   <span className={childs.length>0?iconClass:"show-btn"}  onClick={this.props.isOpen}><span className={itemClass}></span>{data[name]}</span>
                 </div>
               )
            }else{

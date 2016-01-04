@@ -25,17 +25,49 @@ module.exports = function(sequelize,DataTypes){
      getAllByProjectId:function(entity,onSuccess,onError){
        var projectId = entity.projectId;
        ProjectItems.findAll({where:{
-         projectId:projectId
+         ProjectId:projectId
+       }}).then(onSuccess).catch(onError);
+     },
+     delete:function(entity,onSuccess,onError){
+       var id = entity.id;
+       ProjectItems.destroy({where:{
+         id:id
        }}).then(onSuccess).catch(onError);
      },
      createOrUpdate:function(entity,onSuccess,onError){
         if(entity.id!=null){
+          for(var key in entity) {
+              if(entity.hasOwnProperty(key)) {
+                if(!entity[key]&&entity[key]==''){
+                  delete entity[key];
+                }
+              }
+          }
           ProjectItems.update(entity,{where:{id:entity.id}}).then(function(){
-            return Projects.findById(entity.id);
+             return ProjectItems.findById(entity.id);
           }).then(onSuccess).catch(onError);
         }else{
           return ProjectItems.create(entity).then(onSuccess).catch(onError);
         }
+      },
+      bulkcrud:function(entity){
+        for(var key in entity) {
+            if(entity.hasOwnProperty(key)) {
+              if(!entity[key]&&entity[key]==''){
+                delete entity[key];
+              }
+            }
+        }
+        if(entity.id!=null){
+          return ProjectItems.update(entity,{where:{id:entity.id}}).then(function(){
+            return ProjectItems.findById(entity.id);
+          });
+        }else{
+          return ProjectItems.create(entity);
+        }
+      },
+      bulkDestroy:function(ids){
+        return ProjectItems.destroy({where:{ id:ids}});
       }
    }
 
