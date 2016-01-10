@@ -24,6 +24,7 @@ Tree.prototype.addChild = function(data){
 
 Tree.prototype.traverseDF = function(callback){
   (function recurse(currentNode){
+
     for(var i=0,length = currentNode.children.length;i<length;i++){
       recurse(currentNode.children[i]);
     }

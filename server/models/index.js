@@ -14,7 +14,9 @@ var models = [
   'UIsettings',
   'Project',
   'WorkItem',
-  'ProjectItems'
+  'ProjectItems',
+  'CategoriesCode',
+  'CategoriesDetailed'
 ];
 
 models.forEach(function(model){

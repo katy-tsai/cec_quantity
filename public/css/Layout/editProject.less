@@ -57,7 +57,6 @@
 .pagination:hover{
   cursor: pointer;
 }
-
 .noteWorkItems{
   font-size: 1.5rem;
   font-weight: 300;
@@ -69,5 +68,65 @@
   text-align: center;
   vertical-align: middle;
   margin-top: 10%;
+}
+.editItem_div{
+  margin: 0;
+  padding: 0;
+}
+.leftTreeView,
+.middleView{
+  display: block;
+  float: left;
+  height: 103%;
+  padding-bottom: 60px;
+  font-family: Roboto;
+  font-size: 14px;
+  color: #545454;
+  cursor: default;
+  overflow: auto;
+  margin: 0;
+  border: 0 solid #edf2f1;
+  background-color: #fff;
+  white-space: normal;
+  -webkit-appearance: none;
 
+}
+.leftTreeView{
+  width: 20%;
+  max-width: 250px;
+  border:  1px solid rgba(0, 0, 0, 0.2);
+}
+.middleView{
+  width: 40%;
+  border-right:  1px solid rgba(0, 0, 0, 0.2);
+}
+.tree_open_img {
+  background-image: url(data:image/gif;base64,R0lGODlhEgASAJEAAP///4SEhAAAAP///yH5BAUUAAMALAAAAAASABIAAAImnI+py+0Powq01haA3iBgvnlMBnafgKLmWK4LCYpvK0+WJeX6DhUAOw==);
+}
+
+.tree_close_img {
+    background-image: url(data:image/gif;base64,R0lGODlhEgASAJEAAP///4SEhAAAAP///yH5BAUUAAMALAAAAAASABIAAAIqnI+py+0Powq01haA3iDgLWwek2mhNi6ZwLLdZ4owcL4kJ5OWJfX+DykAADs=);
+}
+
+.tree_click {
+  float: left;
+  width: 20px;
+  height: 15px;
+  padding: 2px;
+  cursor: pointer;
+  margin: 0;
+  background-repeat: no-repeat;
+}
+.tree-row{
+  line-height: 20px;
+  padding: 5px;
+  width: 100%;
+}
+
+.tree-node:hover{
+  cursor: pointer;
+
+}
+.tree-view-active{
+  background: #FFF59D;
 }

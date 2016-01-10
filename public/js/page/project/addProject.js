@@ -29,11 +29,14 @@ const AddProject = React.createClass({
 
   render(){
     var project = this.state.project;
+    var toolbar =[{name:'開新專案',clickFun:'addItem',icon:'icon-drive-file'},
+                  {name:'儲存專案',clickFun:'updateItem',icon:'icon-save'},
+                  {name:'另存專案',clickFun:'insertItem',icon:' icon-queue'}];
     return (
       <div>
-      <Breadcrumb header="工程專案" />
+      <Breadcrumb header="工程專案" toolbar={toolbar} addItem={this._handleAddItem} insertItem = {this._handleInsertItem} updateItem = {this._handleUpdateItem}/>
         <div className="listContainer card" z="5">
-          <ProjectList />
+          <ProjectList setProject={this._handleChooseProject}/>
         </div>
         <div className="mainContainer card" z="5">
               <ProjectForm project={project}
@@ -46,10 +49,18 @@ const AddProject = React.createClass({
       </div>
     )
   },
+  _handleAddItem(){
+
+  },
+  _handleInsertItem(){
+
+  },
+  _handleUpdateItem(){
+
+  },
   _handleItemsChange(items){
     console.log(items)
     var project = this.state.project;
-
     this.setState({project:project,ProjectItems:items});
   },
 
@@ -62,6 +73,10 @@ const AddProject = React.createClass({
 
     this.setState({step:step});
 
+  },
+  _handleChooseProject:function(project){
+    console.log(project);
+    this.setState({project:project});
   },
 
   _handleOnChange:function(fileName,e){

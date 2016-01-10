@@ -38,7 +38,6 @@ var EditltemDialog = React.createClass({
     var editProjectItems = this.state.editProjectItems;
     var project = this.state.project;
     ajaxApi.saveItems(editProjectItems,project.id,function(items){
-      console.log(items);
        this.setState({editProjectItems:items});
        this.props.setItems(items);
        this.props.closeDialog();

@@ -3,6 +3,8 @@ const modeles = require('../models');
 const Sequelize = require('Sequelize');
 const ProjectItems = modeles.ProjectItems;
 const Project = modeles.Project;
+const CategoriesCode = modeles.CategoriesCode;
+const CategoriesDetailed = modeles.CategoriesDetailed;
 const ItemsDao = require('./ItemsDao');
 var router = express.Router();
 var path = require('path');
@@ -20,7 +22,6 @@ router.post('/project/:func',function(req,res){
        project = Project.build(obj);
     }
     var func = project[req.params.func];
-
     func(obj,function(objs){
       res.json(objs);
     },function(err){
@@ -31,21 +32,42 @@ router.post('/project/:func',function(req,res){
 router.post('/projectItems/:func',function(req,res){
     var obj = req.body;
     var projectItems = ProjectItems.build();
-
     if(obj){
        projectItems = ProjectItems.build(obj);
     }
     var func = projectItems[req.params.func];
-    console.log(req.params.func);
     func(obj,function(objs){
       res.json(objs);
     },function(err){
       log.err(err);
     })
-
-
 });
-
+router.post('/categoriesCode/:func',function(req,res){
+    var obj = req.body;
+    var categoriesCode = CategoriesCode.build();
+    if(obj){
+       categoriesCode = CategoriesCode.build(obj);
+    }
+    var func = categoriesCode[req.params.func];
+    func(obj,function(objs){
+      res.json(objs);
+    },function(err){
+      log.err(err);
+    })
+});
+router.post('/categoriesDetailed/:func',function(req,res){
+    var obj = req.body;
+    var categoriesDetailed = CategoriesDetailed.build();
+    if(obj){
+       categoriesDetailed = CategoriesDetailed.build(obj);
+    }
+    var func = categoriesDetailed[req.params.func];
+    func(obj,function(objs){
+      res.json(objs);
+    },function(err){
+      log.err(err);
+    })
+});
 router.post('/saveItems',function(req,res){
     var obj = req.body;
     var items = obj.items;
@@ -53,12 +75,6 @@ router.post('/saveItems',function(req,res){
     ItemsDao.crud(items,ProjectId,function(results){
       res.json(results);
     })
-  // var projectItems = ProjectItems.build(obj);
-  // projectItems.createOrUpdate(obj,function(item){
-  //   console.log(item.get());
-  // },function(err){
-  //   console.log(err);
-  // })
 });
 
 router.post('/saveProject',function(req,res){

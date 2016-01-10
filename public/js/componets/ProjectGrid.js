@@ -7,8 +7,8 @@ const itemName = ['item','unit','contractNum','contractPrice','contractCheckPric
 const EditTreeltemDialog = require('./dialog/EditTreeItemDialog');
 var ProjectGrid = React.createClass({
   getInitialState: function() {
-    var projectItems = this.props.editProjectItems;
-    const tree = treeData.init(projectItems);
+   var projectItems = this.props.editProjectItems;
+   const tree = treeData.init(projectItems);
    return {
      project:this.props.project,
      projectItems:projectItems,
@@ -33,10 +33,11 @@ var ProjectGrid = React.createClass({
     var project = this.props.project;
     var editView = this.state.editView;
     var projectItems = this.props.editProjectItems;
+    var editNode = this.state.editNode;
     const tree = treeData.init(projectItems);
     var showEditTreeDialog = this.state.isShowEditTreeDialog?
-      <EditTreeltemDialog closeDialog={this._handleCloseEditDialog}
-       editProjectItems={projectItems}
+      <EditTreeltemDialog closeDialog={this._handleCloseEditDialog} editNode={editNode}
+       editProjectItems={projectItems} title="選取工料項目" type="node"
           project={project}/>:'';
 
     return (
@@ -48,7 +49,6 @@ var ProjectGrid = React.createClass({
     );
   },
   openEdit:function(node){
-    console.log(node);
     this.setState({editNode:node,isShowEditTreeDialog:true});
   },
   _handleCloseEditDialog:function(){

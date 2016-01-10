@@ -1,6 +1,7 @@
 module.exports = function(sequelize,DataTypes){
   var ProjectItems =sequelize.define('ProjectItems',{
     item:DataTypes.STRING(180),
+    code:DataTypes.STRING(10),
     unit:DataTypes.STRING(5),
     contractNum:DataTypes.FLOAT(19,3),
     contractPrice:DataTypes.FLOAT(19,2),
@@ -24,6 +25,7 @@ module.exports = function(sequelize,DataTypes){
      },
      getAllByProjectId:function(entity,onSuccess,onError){
        var projectId = entity.projectId;
+
        ProjectItems.findAll({where:{
          ProjectId:projectId
        }}).then(onSuccess).catch(onError);

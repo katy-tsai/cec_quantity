@@ -4,7 +4,7 @@ var ListTable = React.createClass({
   getInitialState: function() {
    return {
      page:1,
-     pageNum:12,
+     pageNum:this.props.pageNum||12,
      selectRow:""
    };
  },
@@ -72,18 +72,22 @@ var ListTable = React.createClass({
   renderPagger:function(){
     var projects = this.props.datas;
     var pageNum = this.state.pageNum;
+    var isRanderPagger = this.props.isRanderPagger||true;
     var totalPage = Math.ceil(projects.length/pageNum);
     var page = this.state.page;
     var pagger = [];
-    pagger.push(<div className="pagination" key={"page_0"} onClick={this._handlePagePre}><i className=" icon-keyboard-arrow-left"></i></div>)
-    for(var i=1 ;i<=totalPage;i++){
-      var pageClass = "pagination"
-      if(i==page){
-        pageClass="pagination active"
+    if(isRanderPagger=='true'){
+        console.log(pagger)
+      pagger.push(<div className="pagination" key={"page_0"} onClick={this._handlePagePre}><i className=" icon-keyboard-arrow-left"></i></div>)
+      for(var i=1 ;i<=totalPage;i++){
+        var pageClass = "pagination"
+        if(i==page){
+          pageClass="pagination active"
+        }
+        pagger.push(<div className={pageClass} key={"page_"+i} onClick={this._handlePageClick.bind(this,i)}>{i}</div>) ;
       }
-      pagger.push(<div className={pageClass} key={"page_"+i} onClick={this._handlePageClick.bind(this,i)}>{i}</div>) ;
+      pagger.push(<div className="pagination" key={"page_l"} onClick={this._handlePageNext}><i className=" icon-keyboard-arrow-right"></i></div>)
     }
-    pagger.push(<div className="pagination" key={"page_l"} onClick={this._handlePageNext}><i className=" icon-keyboard-arrow-right"></i></div>)
     return pagger;
   },
   _handlePageClick(i){

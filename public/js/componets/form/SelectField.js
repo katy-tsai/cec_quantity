@@ -7,16 +7,17 @@ var SelectField = React.createClass({
       return (
          <div className = "select-field" >
           <label htmlFor={this.props.id}>{this.props.label}</label>
-          <select id={this.props.id} name={this.props.name} onChange={this.props.onChange} className="dropdown-menu">
+          <select id={this.props.id} name={this.props.name} onChange={this.props.onChange} className="dropdown-menu" value = {this.props.value}>
             {menuItems.map(this.renderNode)}
           </select>
          </div >
       )
     },
     renderNode(item){
-    var key = item.code+"_"+item.id;
+      var key = item.code+"_"+item.id;
+
       return (
-        <option value={item.code} key={key} >{item.text}</option>
+        <option value={item.code} key={key}>{item.text}</option>
       )
     }
 })

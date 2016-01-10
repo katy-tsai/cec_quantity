@@ -22,12 +22,16 @@ var projectItem2 = {
   "ProjectId":8
 }
 
-var items = [projectItem1,projectItem2];
-var projectItems = ProjectItems.build(projectItem1);
-projectItems.bulkCUd(items,function(item){
-  console.log(item)
-},function(err){
-  console.log(err);
+// var items = [projectItem1,projectItem2];
+// var projectItems = ProjectItems.build(projectItem1);
+// projectItems.bulkCUd(items,function(item){
+//   console.log(item)
+// },function(err){
+//   console.log(err);
+// })
+var projectItems = ProjectItems.build();
+projectItems.getAllByProjectId({ProjectId:2},function(objs){
+  console.log(objs)
 })
 
 // projectItems.createOrUpdate(projectItem1,function(item){

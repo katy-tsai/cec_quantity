@@ -8,8 +8,7 @@ var ProjectList = React.createClass({
   getInitialState: function() {
    return {
      projects:[],
-     query:"",
-     selectId:""
+     query:""
    };
  },
 
@@ -24,12 +23,15 @@ var ProjectList = React.createClass({
     return (
       <div>
         <SelectList selectClick={this._handleSelect} selectChange={this._handleSelectChange}/>
-        <ListView lists={lists} onClick={this._handleClick} selectId={this.state.selectId}/>
+        <ListView lists={lists} onClick={this._handleClick} selectId = {this.state.selectId}/>
       </div>
     )
   },
-  _handleClick:function(id,e){
-    this.setState({selectId:id});
+  _handleClick:function(index,e){
+    var projects = this.state.projects;
+    var chooseProject = projects[index];
+    this.props.setProject(chooseProject);
+    this.setState({selectId:chooseProject.id});
   },
   _handleSelect:function(e){
     var query = e.target.value;

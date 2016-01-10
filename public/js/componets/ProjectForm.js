@@ -50,7 +50,7 @@ var ProjectForm = React.createClass({
   },
 
   render(){
-
+    var project = this.props.project;
     return (
       <div className="form-div">
         <div className="form-header">專案內容</div>
@@ -58,97 +58,97 @@ var ProjectForm = React.createClass({
           <div className="form-row">
               <TextField label = "工程編號" id="projectCode" name="projectCode" type="text"
                      onChange={this.props.fileChange.bind(null,'projectCode')} onEnterKeyDown={this._handleOnEnterKeyDown.bind(null,1)}
-                     onFocus={this._handleOnFocus}  />
+                     onFocus={this._handleOnFocus} value={project.projectCode} />
              <TextField  label = "工程名稱" id="projectName" name="projectName" type="text"
                       onChange={this.props.fileChange.bind(null,'projectName')} onEnterKeyDown={this._handleOnEnterKeyDown.bind(null,1)}
-                      onFocus={this._handleOnFocus}  />
+                      onFocus={this._handleOnFocus}   value={project.projectName}/>
           </div>
 
           <div className="form-row">
               <TextField   label = "工程別號" id="projectAlias" name="projectAlias" type="text"
                        onChange={this.props.fileChange.bind(null,'projectAlias')} onEnterKeyDown={this._handleOnEnterKeyDown.bind(null,1)}
-                       onFocus={this._handleOnFocus}  />
+                       onFocus={this._handleOnFocus}  value={project.projectAlias}/>
               <TextField   label = "業主" id="owners" name="owners" type="text"
                      onChange={this.props.fileChange.bind(null,'owners')} onEnterKeyDown={this._handleOnEnterKeyDown.bind(null,1)}
-                     onFocus={this._handleOnFocus}  />
+                     onFocus={this._handleOnFocus} value={project.owners} />
           </div>
 
           <div className="form-row">
              <TextField label = "建築師" id="architect" name="architect" type="text"
                       onChange={this.props.fileChange.bind(null,'architect')} onEnterKeyDown={this._handleOnEnterKeyDown.bind(null,1)}
-                      onFocus={this._handleOnFocus}  />
+                      onFocus={this._handleOnFocus}  value={project.architect} />
               <TextField label = "用途說明" id="note" name="note" type="text"
                        onChange={this.props.fileChange.bind(null,'note')} onEnterKeyDown={this._handleOnEnterKeyDown.bind(null,1)}
-                       onFocus={this._handleOnFocus}  />
+                       onFocus={this._handleOnFocus}  value={project.note}/>
           </div>
 
           <div className="form-row">
               <TextField label = "工程地點" id="projectLocation" name="projectLocation" type="text"
                      onChange={this.props.fileChange.bind(null,'projectLocation')} onEnterKeyDown={this._handleOnEnterKeyDown.bind(null,1)}
-                     onFocus={this._handleOnFocus}  />
+                     onFocus={this._handleOnFocus} value={project.projectLocation} />
               <SelectField label="承攬公司"  id="company" name="company" menuItems ={this.state.companys}
-                     onChange={this.props.fileChange.bind(null,'company')}  />
+                     onChange={this.props.fileChange.bind(null,'company')} value={project.company}  />
           </div>
 
           <div className="form-row">
-             <TextField label = "合約工期" id="contractDate" name="contractDate" type="text"
+             <TextField label = "合約工期" id="contractDate" name="contractDate" type="number"
                       onChange={this.props.fileChange.bind(null,'contractDate')} onEnterKeyDown={this._handleOnEnterKeyDown.bind(null,1)}
-                      onFocus={this._handleOnFocus}  suffix="天"/>
+                      onFocus={this._handleOnFocus} value={project.contractDate} suffix="天"/>
               <TextField label = "放樣勘驗" id="startDate" name="startDate" type="date"
                    onChange={this.props.fileChange.bind(null,'startDate')} onEnterKeyDown={this._handleOnEnterKeyDown.bind(null,1)}
-                   onFocus={this._handleOnFocus}  />
+                   onFocus={this._handleOnFocus} value={project.startDate} />
             </div>
 
           <div className="form-row">
              <TextField  label = "使照取得" id="completionDate" name="completionDate" type="date"
                    onChange={this.props.fileChange.bind(null,'completionDate')} onEnterKeyDown={this._handleOnEnterKeyDown.bind(null,1)}
-                   onFocus={this._handleOnFocus}  />
+                   onFocus={this._handleOnFocus} value={project.completionDate} />
               <SelectField label="建物用途"  id="buildingUse" name="buildingUse" menuItems ={this.state.buildingUses}
-                   onChange={this.props.fileChange.bind(null,'buildingUse')}  />
+                   onChange={this.props.fileChange.bind(null,'buildingUse')} value={project.buildingUse} />
             </div>
 
             <div className="form-row">
                <SelectField label="結構型式"  id="structureType" name="structureType" menuItems ={this.state.structureTypes}
-                   onChange={this.props.fileChange.bind(null,'structureType')}  />
+                   onChange={this.props.fileChange.bind(null,'structureType')}  value={project.structureType} />
                <SelectField label="建造工法"  id="buildingMethod" name="buildingMethod" menuItems ={this.state.buildingMethods}
-                    onChange={this.props.fileChange.bind(null,'buildingMethod')}  />
+                    onChange={this.props.fileChange.bind(null,'buildingMethod')} value={project.buildingMethod} />
             </div>
 
             <div className="form-row">
               <SelectField label="擋士開挖"  id="bracedExcavation" name="bracedExcavation" menuItems ={this.state.bracedExcavations}
-                   onChange={this.props.fileChange.bind(null,'bracedExcavation')}  />
+                   onChange={this.props.fileChange.bind(null,'bracedExcavation')}   value={project.bracedExcavation} />
               <SelectField label="外牆型態"  id="facades" name="facades" menuItems ={this.state.facadess}
-                 onChange={this.props.fileChange.bind(null,'facades')}  />
+                 onChange={this.props.fileChange.bind(null,'facades')}   value={project.facades}/>
             </div>
 
             <div className="form-row">
-              <TextField  label = "基地面積" id="baseArea" name="baseArea"
+              <TextField  label = "基地面積" id="baseArea" name="baseArea" type="number"
                      onChange={this.props.fileChange.bind(null,'baseArea')} onEnterKeyDown={this._handleOnEnterKeyDown.bind(null,1)}
-                     onFocus={this._handleOnFocus}  suffix="M2"/>
-              <TextField  label = "樓板面積" id="totalFloorArea" name="totalFloorArea" type="text"
+                     onFocus={this._handleOnFocus}  suffix="M2"  value={project.baseArea}/>
+              <TextField  label = "樓板面積" id="totalFloorArea" name="totalFloorArea" type="number"
                       onChange={this.props.fileChange.bind(null,'totalFloorArea')} onEnterKeyDown={this._handleOnEnterKeyDown.bind(null,1)}
-                      onFocus={this._handleOnFocus}  suffix="M2"/>
+                      onFocus={this._handleOnFocus}  suffix="M2" value={project.totalFloorArea}/>
             </div>
 
             <div className="form-row">
-              <TextField2  label = "地下樓層" id="undergroundNum" name="undergroundNum" type="text" id2="undergroundArea" name2="undergroundArea"
+              <TextField2  label = "地下樓層" id="undergroundNum" name="undergroundNum" type="number" id2="undergroundArea" name2="undergroundArea"
                      onChange={this.props.fileChange.bind(null,'undergroundNum')} onEnterKeyDown={this._handleOnEnterKeyDown.bind(null,1)}
-                     onFocus={this._handleOnFocus}  suffix="層"
+                     onFocus={this._handleOnFocus}  suffix="層" value1={project.undergroundNum}
                      onChange2={this.props.fileChange.bind(null,'undergroundArea')} onEnterKeyDown2={this._handleOnEnterKeyDown.bind(null,1)}
-                     onFocus2={this._handleOnFocus}  suffix2="M2"/>
-               <TextField2  label = "地上樓層" id="dergroundNum" name="dergroundNum" type="text" id2="dergroundArea" name2="dergroundArea"
+                     onFocus2={this._handleOnFocus}  suffix2="M2" value2={project.undergroundArea}/>
+               <TextField2  label = "地上樓層" id="dergroundNum" name="dergroundNum" type="number" id2="dergroundArea" name2="dergroundArea"
                       onChange={this.props.fileChange.bind(null,'dergroundNum')} onEnterKeyDown={this._handleOnEnterKeyDown.bind(null,1)}
-                      onFocus={this._handleOnFocus}  suffix="層"
+                      onFocus={this._handleOnFocus}  suffix="層" value1={project.dergroundNum}
                       onChange2={this.props.fileChange.bind(null,'dergroundArea')} onEnterKeyDown2={this._handleOnEnterKeyDown.bind(null,1)}
-                      onFocus2={this._handleOnFocus}  suffix2="M2"/>
+                      onFocus2={this._handleOnFocus}  suffix2="M2" value2={project.dergroundArea}/>
             </div>
-                      
+
             <div className="form-row">
-              <TextField2  label = "屋突樓層" id="roofNum" name="roofNum" type="text" id2="roofArea" name2="roofArea"
+              <TextField2  label = "屋突樓層" id="roofNum" name="roofNum" type="number" id2="roofArea" name2="roofArea"
                      onChange={this.props.fileChange.bind(null,'roofNum')} onEnterKeyDown={this._handleOnEnterKeyDown.bind(null,1)}
-                     onFocus={this._handleOnFocus}  suffix="層"
+                     onFocus={this._handleOnFocus}  suffix="層" value1={project.roofNum}
                      onChange2={this.props.fileChange.bind(null,'roofArea')} onEnterKeyDown2={this._handleOnEnterKeyDown.bind(null,1)}
-                     onFocus2={this._handleOnFocus}  suffix2="M2"/>
+                     onFocus2={this._handleOnFocus}  suffix2="M2" value2={project.roofArea}/>
 
             </div>
 

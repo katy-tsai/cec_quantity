@@ -8,7 +8,7 @@ var ListView = React.createClass({
     var views = lists.map(function(obj,i){
       var selectClassName = this.props.selectId==obj.id?"select_active":"";
       return (
-        <li data-id={i} key={i} onClick={this.props.onClick.bind(null,obj.id)} className={selectClassName}>
+        <li data-id={i} key={i} onClick={this.props.onClick.bind(null,i)} className={selectClassName}>
           {obj.projectName}(工程編號：{obj.projectCode})
         </li>
       )

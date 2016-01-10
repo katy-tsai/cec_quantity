@@ -1,3 +1,35 @@
+exports.categoriesDao = function(func,obj,callback){
+  var data = null;
+  if(obj){
+    data = obj;
+  }
+  var url = "main/categoriesCode/"+func;
+  $.ajax({
+    method: "post",
+    url: url,
+    data:data
+  })
+  .done(function( msg ) {
+    callback(msg);
+  });
+}
+
+exports.categoriesDetaileDao = function(func,obj,callback){
+  var data = null;
+  if(obj){
+    data = obj;
+  }
+  var url = "main/categoriesDetailed/"+func;
+  $.ajax({
+    method: "post",
+    url: url,
+    data:data
+  })
+  .done(function( msg ) {
+    callback(msg);
+  });
+}
+
 exports.itemDao = function(func,obj,callback){
   var data = null;
   if(obj){
