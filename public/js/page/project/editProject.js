@@ -5,15 +5,15 @@ const Breadcrumb = require("../../componets/Breadcrumb");
 const ListTable = require("../../componets/list/ListTable");
 const EditTable = require("../../componets/edit/EditTable");
 const EditltemDialog = require("../../componets/dialog/EditItemDialog");
-var header =[{code:'index',name:'#',width:'2%'},
-            {code:'projectCode',name:'工程編號',width:'15%'},
-            {code:'projectName',name:'工程名稱',width:'15%'},
-            {code:'projectLocation',name:'工程地點',width:'15%'},
-            {code:'writeUser',name:'填報人員',width:'15%'},
-            {code:'checkUser',name:'審查人員',width:'15%'},
-            {code:'createAt',name:'建檔日期',width:'10%'},
-            {code:'isLock',name:'鎖定',width:'8%'},
-            {code:'edit',name:'編輯',width:'5%'}];
+var header =[{code:'index',name:'#',style:{width:'2%'}},
+            {code:'projectCode',name:'工程編號',style:{width:'10%'}},
+            {code:'projectName',name:'工程名稱',style:{width:'20%'}},
+            {code:'projectLocation',name:'工程地點',style:{width:'15%'}},
+            {code:'writeUser',name:'填報人員',style:{width:'15%'}},
+            {code:'checkUser',name:'審查人員',style:{width:'15%'}},
+            {code:'createAt',name:'建檔日期',style:{width:'10%'}},
+            {code:'isLock',name:'鎖定',style:{width:'8%'}},
+            {code:'edit',name:'編輯',style:{width:'5%'}}];
 var EditProject = React.createClass({
   getInitialState: function() {
    return {
@@ -53,7 +53,7 @@ var EditProject = React.createClass({
       <EditltemDialog closeDialog={this._handleCloseEditDialog}
        editProjectItems={editProjectItems} setItems={this.setItems}
           project={editProject}/>:'';
-    console.log('2.render edittable item:',editProjectItems);
+    // console.log('2.render edittable item:',editProjectItems);
      return (
        <div>
          <Breadcrumb header={editProject.projectName } toolbar={toolbar} editItem={this._handleEditItem} copyItem={this._handleCopyItem} returnList = {this._handleReturnList}/>

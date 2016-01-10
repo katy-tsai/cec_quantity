@@ -12,14 +12,15 @@ var TreeView = React.createClass({
   },
   render(){
     var tree = this.props.dataTree;
-    var roots = tree._root.children;
+    console.log(tree)
     var paddingLeft = this.props.paddingLeft||5
     return (
       <div className="treeView">
-        <TreeNode roots = {roots} paddingLeft={paddingLeft} selectNodeView={this.props.selectNodeView}/>
+        <TreeNode tree = {tree} paddingLeft={paddingLeft} selectNodeView={this.props.selectNodeView} setTree={this.props.setTree}/>
       </div>
     )
-  },
+  }
+
 
 
 });

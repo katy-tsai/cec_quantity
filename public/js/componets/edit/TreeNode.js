@@ -6,7 +6,9 @@ var TreeNode = React.createClass({
     return  {selectid:""};
   },
   render(){
-    var roots = this.props.roots;
+    var tree = this.props.tree;
+    var roots = tree._root.children;
+
     return (
       <ul>
           {roots.map(this.renderRoot)}
@@ -14,6 +16,7 @@ var TreeNode = React.createClass({
     )
   },
   renderRoot:function(root){
+    console.log(root.isOpen);
     var paddingLeft = this.props.paddingLeft;
     var paddingLeft_node = paddingLeft+20;
     var clickDivClass = (root.children.length>0)?((!root.isOpen)?"tree_click tree_open_img":"tree_click tree_close_img"):"tree_click";
@@ -47,16 +50,16 @@ var TreeNode = React.createClass({
   },
   _handleTreeCollapseClick(id,e){
     e.preventDefault();
-     var tree = this.props.roots;
-     tree.map(function(root){
+    var tree = this.props.tree;
+    var roots = tree._root.children;
+     roots.map(function(root){
        var nodeId = root.data.id;
        if(nodeId==id){
          root.isOpen =(!root.isOpen);
        }
      })
-   this.setState({
-     tree:tree
-   });
+     tree._root.children = roots;
+     this.props.setTree(tree);
   }
 
 

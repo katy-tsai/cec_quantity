@@ -10,9 +10,9 @@ var ListTable = React.createClass({
  },
   render(){
       var header = this.props.header.map(function(obj,i){
-        var width = obj.width;
+        var style = obj.style;
         return (
-          <th key={"th_"+i} code={obj.code} style={{width:width}}>{obj.name}</th>
+          <th key={"th_"+i} code={obj.code} style={style}>{obj.name}</th>
         )
       });
       var attrs = this.props.header;
@@ -28,20 +28,26 @@ var ListTable = React.createClass({
         var obj_props =null;
         if(index>=start &&index<max){
           obj_props = attrs.map(function(attr,i){
-              var width = attr.width;
+              var style = attr.style;
               var value = attr.code=="index"?index+1:obj[attr.code];
               var index_key = index+"_td_"+i;
               if(attr.code=='edit'){
                 return (
-                    <td key={index_key}  style={{width:width}} className=" edit-icon" onClick={editClick.bind(null,index)}><i className="icon-mode-edit"></i></td>
+                    <td key={index_key}  style={style} className=" edit-icon" onClick={editClick.bind(null,index)}><i className="icon-mode-edit"></i></td>
                 )
-              }else{
+              }else if(attr.code=='rightAdd'){
                 return (
-                    <td key={index_key}  style={{width:width}}>{value}</td>
+                  <td key={index_key}  style={style} className=" edit-icon" onClick={this.props.addClick.bind(null,obj)}><i className="icon-forward"></i></td>
                 )
               }
 
-          });
+              else{
+                return (
+                    <td key={index_key}  style={style}>{value}</td>
+                )
+              }
+
+          }.bind(this));
         }
         return (
           <tr key={"tr_"+index} className={rowActive} onClick={this._handlerRowClick.bind(this,index)}>

@@ -16,6 +16,7 @@
     padding: 10px;
     background-color: @form-main-color;
     color:#fff;
+    vertical-align: middle;
 
 }
 .list-table >tbody>tr>td.edit-icon{
@@ -74,7 +75,8 @@
   padding: 0;
 }
 .leftTreeView,
-.middleView{
+.middleView,
+.rightView{
   display: block;
   float: left;
   height: 103%;
@@ -93,12 +95,15 @@
 }
 .leftTreeView{
   width: 20%;
-  max-width: 250px;
+  max-width: 200px;
   border:  1px solid rgba(0, 0, 0, 0.2);
 }
 .middleView{
-  width: 40%;
+  width: 45%;
   border-right:  1px solid rgba(0, 0, 0, 0.2);
+}
+.rightView{
+  width: 35%;
 }
 .tree_open_img {
   background-image: url(data:image/gif;base64,R0lGODlhEgASAJEAAP///4SEhAAAAP///yH5BAUUAAMALAAAAAASABIAAAImnI+py+0Powq01haA3iBgvnlMBnafgKLmWK4LCYpvK0+WJeX6DhUAOw==);
@@ -129,4 +134,10 @@
 }
 .tree-view-active{
   background: #FFF59D;
+}
+
+.view_title{
+  text-align: center;
+  font-weight: bold;
+  padding: 2px 0;
 }

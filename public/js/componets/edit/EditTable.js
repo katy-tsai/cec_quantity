@@ -14,7 +14,7 @@ var EditTable = React.createClass({
  render_grid(){
    var editProject = this.props.editProject;
    var editProjectItems = this.props.editProjectItems;
-   console.log('4.render_grid',editProjectItems)
+  //  console.log('4.render_grid',editProjectItems)
    return (
      <div>
          <ProjectGrid  project={editProject} editProjectItems={editProjectItems} />
@@ -23,7 +23,7 @@ var EditTable = React.createClass({
  },
   render(){
     var editProjectItems = this.props.editProjectItems;
-    console.log('3.render grid item:',editProjectItems);
+    // console.log('3.render grid item:',editProjectItems);
     var view = (this.props.editProjectItems.length!=0)?'grid':'blank';
     return this['render_'+view]();
   }
