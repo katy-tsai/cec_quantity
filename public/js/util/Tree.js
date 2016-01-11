@@ -45,6 +45,21 @@ Tree.prototype.traverseBF = function(callback){
   }
 }
 
+Tree.prototype.traverseBFOrder = function(callback){
+  var queue = new Queue();
+  queue.enqueue(this._root);
+  var currentTree = queue.dequeue();
+  while(currentTree){
+    currentTree.data.hasChild = currentTree.children.length>0?"Y":"N";
+    for(var i=0,length=currentTree.children.length;i<length;i++){
+      currentTree.children[i].data.order = i;
+      queue.enqueue(currentTree.children[i]);
+    }
+    callback(currentTree);
+    currentTree = queue.dequeue();
+  }
+}
+
 Tree.prototype.contains = function(callback,traversal){
   traversal.call(this,callback);
 }

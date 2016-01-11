@@ -24,12 +24,11 @@ module.exports = function(sequelize,DataTypes){
        ProjectItems.findAll().then(onSuccess).catch(onError);
      },
      getAllByProjectId:function(entity,onSuccess,onError){
-       var projectId = entity.projectId;
-
-       ProjectItems.findAll({where:{
-         ProjectId:projectId
-       }}).then(onSuccess).catch(onError);
-     },
+      var projectId = entity.ProjectId;
+      ProjectItems.findAll({where:{
+        ProjectId:projectId
+      },order:'`order`'}).then(onSuccess).catch(onError);
+    },
      delete:function(entity,onSuccess,onError){
        var id = entity.id;
        ProjectItems.destroy({where:{

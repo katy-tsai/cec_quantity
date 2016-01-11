@@ -5,6 +5,7 @@ const ajaxApi = require('../../util/ajaxApi');
 const treeData = require('../../util/TreeData');
 const TreeView = require('../edit/TreeView');
 const ListTable = require("../list/ListTable");
+const _ = require('lodash');
 var header =[{code:'index',name:'#',style:{width:'2%',textAlign:'center',verticalAlign:'middle'}},
             {code:'code',name:'項目編號',style:{width:'20%',verticalAlign:'middle'}},
             {code:'item',name:'項目名稱',style:{width:'45%',verticalAlign:'middle'}},
@@ -40,7 +41,11 @@ var EditTreeltemDialog = React.createClass({
     var dataTree = this.state.dataTree;
     var project = this.state.project;
     var editNode = this.state.editNode;
-    var chooseItems = this.state.chooseItems;
+    var projectItems = this.state.projectItems;
+    var parentId = editNode.data.id;
+    var type = this.state.type;
+    var typeName = (type=='node')?"工料":"工項";
+    var chooseItems =  _.sortBy(_.filter(projectItems,{parent:parentId }),'order');
     console.log(chooseItems)
     if(!dataTree){
       dataTree = treeData.initWithParentCode(categories,'code');
@@ -51,11 +56,11 @@ var EditTreeltemDialog = React.createClass({
 
         <div className="editItem_div">
           <div className="leftTreeView">
-            <h1 className="view_title">料號編碼</h1>
+            <h1 className="view_title">{typeName}編碼</h1>
             <TreeView dataTree={dataTree} paddingLeft={10} selectNodeView={this._handleSelectNodeView} setTree={this._handleSetTree}/>
           </div>
           <div className="middleView">
-            <h1 className="view_title">選擇料號</h1>
+            <h1 className="view_title">選擇{typeName}</h1>
             <ListTable datas={categoriesDetail} header={header} addClick={this._handleselectClick} isRanderPagger='false'/>
           </div>
           <div className="rightView">
@@ -74,8 +79,11 @@ var EditTreeltemDialog = React.createClass({
     this.setState({dataTree:tree});
   },
   _handleselectClick(item){
-    var chooseItems = this.state.chooseItems;
-    this.setState({chooseItems:chooseItems.concat(item)});
+    var editNode = this.state.editNode;
+    item.parentId = editNode.data.id;
+    item.type = 'node';
+    
+    this.setState({projectItems:projectItems.concat(item)});
   },
   _handleSelectNodeView(node){
     var code = node.data.code;

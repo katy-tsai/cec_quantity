@@ -13,7 +13,7 @@ function init(data){
   var rootArray = _.sortBy(_.filter(data,{type:'root'}),'order');
   rootArray.map(function(root){
     tree.add(root,'project',tree.traverseDF,'item');
-    addChild(root,data,'id');
+    addChild(root,data,'id',tree);
   })
   return tree;
 }

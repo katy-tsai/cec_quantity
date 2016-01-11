@@ -13,6 +13,7 @@ var EditltemDialog = React.createClass({
 
   render(){
     var editItems = this.state.editProjectItems.map(function(obj,i){
+      console.log(obj)
       return <Editltem item={obj} index={i} key={"edititem_"+i} deletItem={this._handleDeletItem}  editChange={this._handleEditChange}/>
     }.bind(this));
     return (
