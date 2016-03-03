@@ -52,12 +52,13 @@ var Categories = React.createClass({
 
     var WorkItemTabCss =( type=='WorkItem')?'ripple active':'ripple';
     var MaterialItemTabCss = ( type=='MaterialItem')?'ripple active':'ripple';
+    //  <div className="tabs">
+    //     <label className={WorkItemTabCss} onClick={this._handleTabClick.bind(this,'WorkItem')}>工項</label>
+    //     // <label className={MaterialItemTabCss} onClick={this._handleTabClick.bind(this,'MaterialItem')}>工料</label>
+    //  </div>
     return (
       <div className="seetingContent">
-         <div className="tabs">
-            <label className={WorkItemTabCss} onClick={this._handleTabClick.bind(this,'WorkItem')}>工項</label>
-            <label className={MaterialItemTabCss} onClick={this._handleTabClick.bind(this,'MaterialItem')}>工料</label>
-         </div>
+
           <div className="leftTreeView">
             <h1 className="view_title">工項分類</h1>
             <TreeView dataTree={dataTree} paddingLeft={10} isShowMenu={true} selectNodeView={this._handleSelectNodeView} setTree={this._handleSetTree}/>
