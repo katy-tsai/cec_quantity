@@ -31,6 +31,12 @@ module.exports = function(sequelize,DataTypes){
         WorkItemId:WorkItemId
       },order:'`order`'}).then(onSuccess).catch(onError);
     },
+    getByWorkItemId:function(entity){
+     var WorkItemId = entity.WorkItemId;
+     return WorkItemMapping.findAll({where:{
+       WorkItemId:WorkItemId
+     },order:'`order`'});
+   },
      createOrUpdate:function(entity,onSuccess,onError){
        for(var key in entity) {
            if(entity.hasOwnProperty(key)) {
