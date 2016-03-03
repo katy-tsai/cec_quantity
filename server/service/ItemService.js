@@ -167,14 +167,9 @@ module.exports = {
                 }.bind(this),function(err){
                   console.log(err)
                 })
-            }else{
-              callback(childs);
-
             }
 
           }.bind(this));
-        }else{
-            callback([]);
         }
 
     }.bind(this),function(err){
