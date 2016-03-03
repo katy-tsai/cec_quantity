@@ -1,105 +1,143 @@
+@treeHeader-background-color:#F5F5F5;
 
-@border-color:#ddd;
-@row-hover-backgrounc-color:#e5e5e5;
-@row-backgrounc-color:#B3E5FC;
-@treeHeader-background-color:#FFF59D;
+#tree-grid{
+  width: 100%;
+  thead>tr{
+    background-color: @treeHeader-background-color;
+  }
+  thead>tr>th{
+    padding: 10px;
+    border: 1px solid #CCCCCC;
+  }
+  tbody>tr>td{
+    padding: 5px;
+    border: 1px solid #CCCCCC;
+  }
+ .node{
+    padding-left: 15px;
+    // display: block;
+    // float: left;
+  }
+  .leaf{
+      padding-left: 20px;
+  }
+  .leaf1{
+      padding-left: 30px;
+  }
 
-.style-trans(@css,@style){
-  -moz-@{css}: @style;
-  -webkit-@{css}: @style;
-  -o-@{css}: @style;
-  @{css}: @style;
+
 }
 
-.show-btn:hover{
+.edit-icon{
+  text-align: center;
   cursor: pointer;
+  font-size: 1.2rem;
+  color: #4A627E;
 }
 .treeHeader{
-  display: inline-flex;
-  vertical-align: top;
-  flex-direction: row;
-  background-color: @treeHeader-background-color;
-  opacity: 0.8;
-  div{
-    border-right: 1px solid @border-color;
-    border-top: 1px solid @border-color;
-    border-bottom: 1px solid @border-color;
-    text-align: center;
-    line-height: 18px;
-    font-size: 18px;
-    padding: 5px;
-    font-weight: bolder;
-    color:#424242;
-  }
-  div:first-child{
-    border-left: 1px solid @border-color;
-  }
-}
-
-.root,.node,.leaf{
-  display: flex;
-  vertical-align: top;
-  flex-direction: column;
-  margin: 0;
-  padding: 0;
-
-}
-#tree-grid{
-  font-size: 15px;
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-ul>li{
-  list-style-type: none;
-  float: left;
-}
-.treeBody{
-  border-left: 1px solid @border-color;
-  border-right: 1px solid @border-color;
-}
-
-.node-item{
   width: 100%;
-  border-bottom: 1px solid @border-color;
-  overflow-x: hidden;
-  .root-row,
-  .node-row,
-  .leaf-row{
-    display: inline-flex;
-    flex-direction: row;
-    height: 40px;
-    div{
-      text-align: center;
-      line-height: 18px;
-      // padding: 5px 0;
-      width: 100%;
-    }
-    div:first-child{
-      text-align: left;
-    }
-    &:hover{
-      background-color: @row-hover-backgrounc-color;
-    }
+}
+// @border-color:#ddd;
+// @row-hover-backgrounc-color:#e5e5e5;
+// @row-backgrounc-color:#B3E5FC;
+// @treeHeader-background-color:#FFF59D;
+//
+// .style-trans(@css,@style){
+//   -moz-@{css}: @style;
+//   -webkit-@{css}: @style;
+//   -o-@{css}: @style;
+//   @{css}: @style;
+// }
+//
+// .show-btn:hover{
+//   cursor: pointer;
+// }
+// .treeHeader{
+//   display: inline-flex;
+//   vertical-align: top;
+//   flex-direction: row;
+//   background-color: @treeHeader-background-color;
+//   opacity: 0.8;
+//   div{
+//     border-right: 1px solid @border-color;
+//     border-top: 1px solid @border-color;
+//     border-bottom: 1px solid @border-color;
+//     text-align: center;
+//     line-height: 18px;
+//     font-size: 18px;
+//     padding: 5px;
+//     font-weight: bolder;
+//     color:#424242;
+//   }
+//   div:first-child{
+//     border-left: 1px solid @border-color;
+//   }
+// }
+//
+// .root,.node,.leaf{
+//   display: flex;
+//   vertical-align: top;
+//   flex-direction: column;
+//   margin: 0;
+//   padding: 0;
+//
+// }
+// #tree-grid{
+//   font-size: 15px;
+//   margin: 0 auto;
+//   box-sizing: border-box;
+// }
 
-  }
-}
-.show-btn{
-    padding-left: 20px;
-}
-.tree-open{
-  background: url('../../images/tree_open.png') no-repeat;
-  }
-.tree-close{
-  background: url('../../images/tree_close.png') no-repeat;
-}
-
-.node-item .root-row div:first-child{
-  //padding-left: 10px;
-}
-.node-item .node-row div:first-child{
-  padding-left: 20px;
-}
-.node-item .leaf-row div:first-child{
-  padding-left: 30px;
-}
+// ul>li{
+//   list-style-type: none;
+//   float: left;
+// }
+// .treeBody{
+//   border-left: 1px solid @border-color;
+//   border-right: 1px solid @border-color;
+// }
+//
+// .node-item{
+//   width: 100%;
+//   border-bottom: 1px solid @border-color;
+//   overflow-x: hidden;
+//   .root-row,
+//   .node-row,
+//   .leaf-row{
+//     display: inline-flex;
+//     flex-direction: row;
+//     height: 40px;
+//     div{
+//       text-align: center;
+//       line-height: 18px;
+//       // padding: 5px 0;
+//       width: 100%;
+//     }
+//     div:first-child{
+//       text-align: left;
+//     }
+//     &:hover{
+//       background-color: @row-hover-backgrounc-color;
+//     }
+//
+//   }
+// }
+// .show-btn{
+//     padding-left: 20px;
+// }
+// .tree-open{
+//   background: url('../../images/tree_open.png') no-repeat;
+//   }
+// .tree-close{
+//   background: url('../../images/tree_close.png') no-repeat;
+// }
+//
+// .node-item .root-row div:first-child{
+//   //padding-left: 10px;
+// }
+// .node-item .node-row div:first-child{
+//   padding-left: 20px;
+// }
+// .node-item .leaf-row div:first-child{
+//   padding-left: 30px;
+// }

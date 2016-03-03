@@ -1,16 +1,11 @@
 const modeles = require('../server/models');
 const WorkItem = modeles.WorkItem;
+const data = require("./WorkItem.json").data;
 
-
- WorkItem.sync();
-
-WorkItem.bulkCreate([
-  {item:'結構',isDefault:'Y'},
-  {item:'泥作',isDefault:'Y'},
-  {item:'輕質牆',isDefault:'Y'}
-]).then(function() {
-  return WorkItem.findAll();
-}).then(function(item) {
-
-  console.log(item);
-})
+ WorkItem.sync({force:true}).then(function(){
+   WorkItem.bulkCreate(data).then(function() {
+     return WorkItem.findAll();
+   }).then(function(item) {
+     console.log(item);
+   })
+ })

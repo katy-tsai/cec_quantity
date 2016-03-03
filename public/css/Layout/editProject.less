@@ -4,6 +4,7 @@
   width: 99%;
   margin: 5px ;
   background-color: @optPlane-color;
+  overflow-y: auto;
 }
 
 .list-table{
@@ -31,6 +32,12 @@
 .list-table >tbody>tr>td{
     border:1px solid #ddd;
     padding: 10px 10px;
+}
+.baseArea::after{
+  content: 'M';
+}
+.totalFloorArea::after{
+  content: 'M';
 }
 .tfooter{
   margin-top: 20px;
@@ -74,37 +81,7 @@
   margin: 0;
   padding: 0;
 }
-.leftTreeView,
-.middleView,
-.rightView{
-  display: block;
-  float: left;
-  height: 103%;
-  padding-bottom: 60px;
-  font-family: Roboto;
-  font-size: 14px;
-  color: #545454;
-  cursor: default;
-  overflow: auto;
-  margin: 0;
-  border: 0 solid #edf2f1;
-  background-color: #fff;
-  white-space: normal;
-  -webkit-appearance: none;
 
-}
-.leftTreeView{
-  width: 20%;
-  max-width: 200px;
-  border:  1px solid rgba(0, 0, 0, 0.2);
-}
-.middleView{
-  width: 45%;
-  border-right:  1px solid rgba(0, 0, 0, 0.2);
-}
-.rightView{
-  width: 35%;
-}
 .tree_open_img {
   background-image: url(data:image/gif;base64,R0lGODlhEgASAJEAAP///4SEhAAAAP///yH5BAUUAAMALAAAAAASABIAAAImnI+py+0Powq01haA3iBgvnlMBnafgKLmWK4LCYpvK0+WJeX6DhUAOw==);
 }

@@ -1,14 +1,15 @@
 module.exports={
   data:[
-    {id:1,item:'root',price:'',num:'',test:'',test2:'',parent:'',projectId:1,hasChild:'Y',order:'1',type:'root'},
-    {id:2,item:'node1',price:'',num:'',test:'',test2:'',parent:1,projectId:1,hasChild:'Y',order:'1',type:'node'},
-    {id:3,item:'node2',price:'',num:'',test:'',test2:'',parent:1,projectId:1,hasChild:'Y',order:'2',type:'node'},
-    {id:4,item:'node3',price:'',num:'',test:'',test2:'',parent:1,projectId:1,hasChild:'N',order:'3',type:'node'},
-    {id:5,item:'node1-leaf1',price:100,num:3,test:300,test2:'111',parent:2,projectId:1,hasChild:'N',order:'1',type:'leaf'},
-    {id:6,item:'node1-leaf2',price:200,num:2,test:400,test2:'aaa',parent:2,projectId:1,hasChild:'N',order:'2',type:'leaf'},
-    {id:7,item:'node2-leaf1',price:50,num:3,test:150,test2:'ttt',parent:3,projectId:1,hasChild:'N',order:'1',type:'leaf'},
-    {id:8,item:'node2-leaf2',price:100,num:2,test:200,test2:'bbb',parent:3,projectId:1,hasChild:'N',order:'2',type:'leaf'},
-    {id:9,item:'root2',price:'',num:'',test:'',test2:'',parent:'',projectId:1,hasChild:'N',order:'2',type:'root'},
-    {id:10,item:'root3',price:'',num:'',test:'',test2:'',parent:'',projectId:1,hasChild:'N',order:'3',type:'root'}
+    {id:1,item:'root',contractPrice:'',contractNum:'',test:'',note:'',parent:'',projectId:1,hasChild:'Y',order:'1',type:'root'},
+    {id:2,item:'node1',contractPrice:'100',contractNum:'',test:'',note:'',parent:1,projectId:1,hasChild:'Y',order:'1',type:'node'},
+    {id:3,item:'node2',contractPrice:'200',contractNum:'',test:'',note:'',parent:1,projectId:1,hasChild:'Y',order:'2',type:'node'},
+    {id:4,item:'node3',contractPrice:'300',contractNum:'',test:'',note:'',parent:1,projectId:1,hasChild:'N',order:'3',type:'node'},
+    {id:5,item:'node1-leaf1',contractPrice:100,contractNum:3,test:300,note:'111',parent:2,projectId:1,hasChild:'Y',order:'1',type:'leaf'},
+    {id:6,item:'node1-leaf2',contractPrice:200,contractNum:2,test:400,note:'aaa',parent:2,projectId:1,hasChild:'N',order:'2',type:'leaf'},
+    {id:7,item:'node2-leaf1',contractPrice:50,contractNum:3,test:150,note:'ttt',parent:3,projectId:1,hasChild:'N',order:'1',type:'leaf'},
+    {id:8,item:'node2-leaf2',contractPrice:100,contractNum:2,test:200,note:'bbb',parent:3,projectId:1,hasChild:'N',order:'2',type:'leaf'},
+    {id:9,item:'root2',contractPrice:'',contractNum:'',test:'',note:'',parent:'',projectId:1,hasChild:'N',order:'2',type:'root'},
+    {id:10,item:'root3',contractPrice:'',contractNum:'',test:'',note:'',parent:'',projectId:1,hasChild:'N',order:'3',type:'root'},
+     {id:11,item:'test-leaf1',contractPrice:100,contractNum:3,test:300,note:'222',parent:5,projectId:1,hasChild:'N',order:'1',type:'leaf-1'},
   ]
 }

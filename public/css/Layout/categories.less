@@ -1,0 +1,58 @@
+.seetingContent{
+  width: 100%;
+  height: 100%;
+  display: block;
+  float: left;
+  overflow-y: auto;
+}
+
+.addCategories{
+  float: left;
+  font-size: 1.2em;
+  font-family: inherit;
+  text-transform: none;
+  box-sizing: border-box;
+  margin: 5px;
+  color:#8583A6;
+}
+.addCategories :hover{
+  cursor: pointer;
+}
+
+.tabs{
+  width: 100%;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border-bottom: 5px solid #ddd;
+  background-color:  #F4F4F4;
+  label{
+    width: 200px;
+    padding: 10px;
+    margin-top: 5px;
+    margin-right: 2px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 16px;
+    line-height: 16px;
+    background-color:#EDE7F6;
+    box-shadow: 0 0px 1px rgba(0, 0, 0, 0.5);
+    border-top-left-radius: 45px 145px;
+    border-top-right-radius: 45px 145px;
+    opacity: 0.5;
+    &:hover{
+      cursor: pointer;
+      opacity: 0.8;
+    }
+    &.active{
+      opacity:1;
+      background-color: #7ABCB3;
+      color: #fff;
+    }
+  }
+}
+
+.editCategories-table{
+  width: 80%;
+  margin: 5px auto;
+}

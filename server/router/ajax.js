@@ -19,7 +19,6 @@ router.get('/uiItems', function(req, res, next) {
 
 router.get('/workItem', function(req, res, next) {
   WorkItem.findAll().then(function(findobjs){
-    console.log(findobjs);
     res.json(findobjs);
   })
 });

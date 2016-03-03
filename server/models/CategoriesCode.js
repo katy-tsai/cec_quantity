@@ -6,14 +6,18 @@ module.exports = function(sequelize,DataTypes){
     parent:DataTypes.STRING(10),
     hasChild:DataTypes.STRING(1),
     type:DataTypes.STRING(10),
-    cType:DataTypes.STRING(10)
+    cType:DataTypes.STRING(20),
+    state:{
+      type:DataTypes.STRING(1),
+      defaultValue:'Y'
+    }
   },
    {tableName: 'categoriesCode',
    instanceMethods:{
      getBycType:function(entity,onSuccess,onError){
        var cType = entity.cType;
        CategoriesCode.findAll({where:{
-         cType:cType
+         cType:cType,state:'Y'
        }}).then(onSuccess).catch(onError);
      }}})
 

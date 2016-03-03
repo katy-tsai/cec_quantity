@@ -1,6 +1,7 @@
 var Sequelize = require('Sequelize');
 
 var sequelize = new Sequelize('cecDB','root','admin',{
+  timezone: '+08:00',
   host:'localhost',
   dialect:'mysql',
   pool:{
@@ -13,10 +14,11 @@ var sequelize = new Sequelize('cecDB','root','admin',{
 var models = [
   'UIsettings',
   'Project',
-  'WorkItem',
   'ProjectItems',
   'CategoriesCode',
-  'CategoriesDetailed'
+  'WorkItem',
+  'WorkItemMapping',
+  'MaterialItem'
 ];
 
 models.forEach(function(model){
@@ -27,6 +29,9 @@ models.forEach(function(model){
   m.Project.hasMany(m.ProjectItems);
   m.ProjectItems.belongsTo(m.Project);
   m.ProjectItems.belongsTo(m.ProjectItems,{foreignKey:'parent'});
+  m.WorkItem.hasMany(m.WorkItemMapping);
+  m.WorkItemMapping.belongsTo(m.WorkItem);
+  m.WorkItemMapping.belongsTo(m.WorkItemMapping,{foreignKey:'parent'});
 })(module.exports);
 
 sequelize.sync();

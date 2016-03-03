@@ -1,0 +1,92 @@
+.leftTreeView,
+.leftTreeView-dialog,
+.middleView,
+.rightView,
+.topView{
+  display: block;
+  float: left;
+  font-family: Roboto;
+  font-size: 14px;
+  color: #545454;
+  cursor: default;
+  overflow: auto;
+  margin: 0;
+  border: 0 solid #edf2f1;
+  background-color: #fff;
+  white-space: normal;
+  -webkit-appearance: none;
+
+}
+.leftTreeView,
+.middleView,
+.rightView,
+.topView{
+    height: 103vh;
+}
+.leftTreeView{
+  width: 20%;
+  height:100vh;
+  padding-bottom: 60px;
+  border:  1px solid rgba(0, 0, 0, 0.2);
+  overflow-y: scroll;
+}
+.leftTreeView-dialog{
+  width: 20%;
+  margin-bottom: 80px;
+  border:  1px solid rgba(0, 0, 0, 0.2);
+  overflow-y: scroll;
+}
+
+.middleView{
+  width: 45%;
+  border-right:  1px solid rgba(0, 0, 0, 0.2);
+  overflow-y: scroll;
+}
+.rightView{
+  width: 35%;
+}
+.topView{
+  width: 80%;
+}
+
+.top-categories-edit,
+.bottem-categories{
+  display: block;
+  float: left;
+  color: #545454;
+  cursor: default;
+  overflow: auto;
+  margin: 0;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  white-space: normal;
+  -webkit-appearance: none;
+}
+.top-categories-edit{
+    height: 50%;
+    width: 100%;
+}
+.bottem-categories{
+  height: 50%;
+  width: 100%;
+  .categoris-tree-view{
+    display: block;
+    float: left;
+    width: 18%;
+    height: 100%;
+    margin-bottom: 60px;
+    border:  1px solid rgba(0, 0, 0, 0.2);
+    overflow-y: scroll;
+  }
+
+  .categoris-listTable{
+    display: block;
+    float: left;
+    width: 82%;
+    height: 100%;
+    margin-bottom: 60px;
+    overflow-y: scroll;
+
+
+  }
+}

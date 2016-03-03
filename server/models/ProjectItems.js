@@ -12,10 +12,11 @@ module.exports = function(sequelize,DataTypes){
     executeCheckPrice:DataTypes.FLOAT(19,0),
     executeRate:DataTypes.FLOAT(19,3),
     note:DataTypes.STRING(180),
+    firm:DataTypes.STRING(180),
     executeCompany:DataTypes.STRING(5),
-    hasChild:DataTypes.STRING(1),
     order:DataTypes.INTEGER,
-    type:DataTypes.STRING(10)
+    type:DataTypes.STRING(10),
+    workMappingId:DataTypes.INTEGER
   },
    {tableName: 'projectItems',
    instanceMethods:{
@@ -35,15 +36,18 @@ module.exports = function(sequelize,DataTypes){
          id:id
        }}).then(onSuccess).catch(onError);
      },
+    
      createOrUpdate:function(entity,onSuccess,onError){
+       for(var key in entity) {
+           if(entity.hasOwnProperty(key)) {
+             if(!entity[key]&&entity[key]==''){
+               if(!(key=='order'&&entity['order']==0)){
+                    delete entity[key];
+               }
+             }
+           }
+       }
         if(entity.id!=null){
-          for(var key in entity) {
-              if(entity.hasOwnProperty(key)) {
-                if(!entity[key]&&entity[key]==''){
-                  delete entity[key];
-                }
-              }
-          }
           ProjectItems.update(entity,{where:{id:entity.id}}).then(function(){
              return ProjectItems.findById(entity.id);
           }).then(onSuccess).catch(onError);
@@ -55,7 +59,9 @@ module.exports = function(sequelize,DataTypes){
         for(var key in entity) {
             if(entity.hasOwnProperty(key)) {
               if(!entity[key]&&entity[key]==''){
-                delete entity[key];
+                if(!(key=='order'&&entity['order']==0)){
+                     delete entity[key];
+                }
               }
             }
         }

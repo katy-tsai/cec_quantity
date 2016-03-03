@@ -1,7 +1,7 @@
 var ProjectItems = require('./ProjectItems');
 
 module.exports = function(sequelize,DataTypes){
-   var Projects = sequelize.define('Project',{
+   var Project = sequelize.define('Project',{
         projectCode:DataTypes.STRING(20),
         projectName:DataTypes.STRING(180),
         projectAlias :DataTypes.STRING(50),
@@ -12,7 +12,7 @@ module.exports = function(sequelize,DataTypes){
         note:DataTypes.STRING(180),
         startDate:DataTypes.DATE,
         completionDate:DataTypes.DATE,
-        contractDate:DataTypes.DATE,
+        contractDate:DataTypes.INTEGER,
         buildingUse:DataTypes.STRING(5),
         structureType:DataTypes.STRING(5),
         buildingMethod:DataTypes.STRING(5),
@@ -41,13 +41,13 @@ module.exports = function(sequelize,DataTypes){
     instanceMethods:{
 
       getAll:function(entity,onSuccess,onError){
-        Projects.findAll().then(onSuccess).catch(onError);
+        Project.findAll({order: 'updatedAt DESC'}).then(onSuccess).catch(onError);
       },
 
       getLikeNameOrCode:function(entity,onSuccess,onError){
         var projectCode_like = '%'+entity.projectCode+'%';
         var projectName_like = '%'+entity.projectName+'%';
-        Projects.findAll({where:{
+        Project.findAll({where:{
               $or: [
                 {
                   projectCode: {
@@ -60,28 +60,35 @@ module.exports = function(sequelize,DataTypes){
                   }
                 }
               ]
-            }
+            },order: 'updatedAt DESC'
           }).then(onSuccess).catch(onError);
       },
 
      getById:function(entity,onSuccess,onError){
        var id = entity.id;
-       Projects.find({where:{id:id}},{raw:true}).then(onSuccess).catch(onError);
+       Project.find({where:{id:id}},{raw:true}).then(onSuccess).catch(onError);
      },
       createOrUpdate:function(entity,onSuccess,onError){
-
+        for(var key in entity) {
+            if(entity.hasOwnProperty(key)) {
+              if(!entity[key]&&entity[key]==''){
+                delete entity[key];
+              }
+            }
+        }
          if(entity.id!=null){
-           Projects.update(entity,{where:{id:entity.id}}).then(function(){
-             return Projects.findById(entity.id);
+           Project.update(entity,{where:{id:entity.id}}).then(function(){
+             return Project.findById(entity.id);
            }).then(onSuccess).catch(onError);
          }else{
-           return Projects.create(entity).then(onSuccess).catch(onError);
+           console.log('create')
+           return Project.create(entity).then(onSuccess).catch(onError);
          }
        }
     }
   }
 );
 
-return Projects;
+return Project;
 
 }
