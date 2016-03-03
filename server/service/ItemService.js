@@ -148,9 +148,9 @@ module.exports = {
     data = data;
     var rootArray = _.filter(data,{type:'root'});
     var roots =this.handleWorkMappingToItem(rootArray,ProjectId,parentId,'leaf');
-
     this.bulkCreateOrUpdate(roots,function(result){
-        if(result.size()>0){
+
+        if(result.length>0){
           result.map(function(parent){
             var childArray = _.sortBy(_.filter(data,{parent:parent['workMappingId']}),'order');
             console.log('childArray=',childArray)
