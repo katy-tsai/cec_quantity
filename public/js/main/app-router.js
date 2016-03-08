@@ -12,14 +12,14 @@ var SettingCategories = require('./page/Categories');
 
 
 // <Route path="/project/all" component={AllProject} />
-
+  <Route path="home" component={Home} />
 const AppRoutes = (
   <Route path="/" component={Master}>
-    <Route path="home" component={Home} />
+
     <Route path="/project/add" component={AddProject} />
     <Route path="/project/edit" component={EditProject} />
     <Route path="/setting/categories" component={SettingCategories} />
-    <IndexRoute component={Home}/>
+    <IndexRoute component={AddProject}/>
   </Route>
 );
 

@@ -30,8 +30,7 @@ const AddProject = React.createClass({
     var lists = this.state.projectList;
 
     var toolbar =[{name:'開新專案',clickFun:'addProject',icon:'icon-drive-file'},
-                  {name:'儲存專案',clickFun:'updateProject',icon:'icon-save'},
-                  {name:'另存專案',clickFun:'insertProject',icon:' icon-queue'}];
+                  {name:'儲存專案',clickFun:'updateProject',icon:'icon-save'}];
     return (
       <div>
       <Breadcrumb header="工程專案" toolbar={toolbar} addProject={this._handleAddProject} insertProject = {this._handleInsertProject} updateProject = {this._handleUpdateProject}/>

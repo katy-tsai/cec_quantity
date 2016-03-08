@@ -4,7 +4,7 @@ const Login = require('./index/Login');
 
 require('../css/index');
 ReactDOM.render(
-  <div>
+  <div className="indexContext">
     <Login />
   </div>
   ,document.getElementById('app')
