@@ -100,9 +100,9 @@ module.exports = {
       this.getWorkItemMappingTree(workItemId,function(datas){
         this.saveNodeItems(datas,ProjectId,node_parentId,function(childs){
           node.children = childs;
-
+            callback(node);
         });
-        callback(node);
+      //  callback(node);
       }.bind(this));
     }.bind(this),function(err){
       console.log(err);

@@ -36,7 +36,7 @@ const Login = React.createClass({
   },
   handleClick(){
     console.log('test');
-    window.location.href = "main";
+    window.location.href = "../main";
   },
   _handleOnFocus:function(e){
 

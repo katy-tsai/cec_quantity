@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
+var path = require('path');
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-  res.sendFile('./public/index.html');
+  res.sendFile(path.resolve('./public/index.html'));
 });
 
 router.post('/checkAccount',function(req,res,next){

@@ -5,8 +5,9 @@ const nextHeader = [{code:'addbtn',name:'',style:{width:'3%',textAlign:'center',
             {code:'index',name:'#',style:{width:'7%',textAlign:'center',verticalAlign:'middle'}},
             {code:'code',name:'項目編號',style:{width:'20%',textAlign:'center',verticalAlign:'middle'}},
             {code:'item',name:'項目名稱',style:{width:'30%',verticalAlign:'middle'}},
-            {code:'unit',name:'單位',style:{width:'15%',textAlign:'center',verticalAlign:'middle'}},
-            {code:'contractPrice',name:'單價',style:{width:'15%',textAlign:'center',verticalAlign:'middle'}},
+            {code:'unit',name:'單位',style:{width:'10%',textAlign:'center',verticalAlign:'middle'}},
+            {code:'quantity',name:'數量',style:{width:'10%',textAlign:'center',verticalAlign:'middle'}},
+            {code:'contractPrice',name:'單價',style:{width:'10%',textAlign:'center',verticalAlign:'middle'}},
             {code:'removebtn',name:'刪除',style:{width:'10%',textAlign:'center',verticalAlign:'middle'}}]
 
 
@@ -128,6 +129,8 @@ var EditSecondTable = React.createClass({
            </td>
          )
 
+       }else if(attr.code=='quantity'){
+          return <td key={index_key} style={style}>1</td>;
        }else{
          if(value){
            return <td key={index_key} style={style}><span className={spanClass}>{value}</span></td>;
